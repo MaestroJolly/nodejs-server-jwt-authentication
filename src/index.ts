@@ -2,17 +2,23 @@
 
 require('dotenv').config();
 
-const express = require('express');
-const bodyParser = require('body-parser');
+
+import express from 'express';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import authRoutes from './components/auth';
+
 const app = express();
-const morgan = require('morgan');
 const PORT = process.env.PORT || 3333;
+
 
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
+
+app.use(authRoutes);
 
 app.get('/', (req, res)=>{
     res.json({
