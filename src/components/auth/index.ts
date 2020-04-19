@@ -2,20 +2,15 @@
 
 import express from 'express';
 import AuthController from '../auth/auth.controller';
+import AuthEncryptionMiddleware from '../middlewares/auth.encryption.middleware';
 
 const router = express.Router();
 
 const authController = new AuthController;
-
-router.get('/test', (req, res) =>{
-    console.log(req);
-    res.send({
-        test: "hi"
-    });
-})
+const authEncryptionMiddleware = new AuthEncryptionMiddleware;
 
 
-router.get('/login', authController.login);
+router.post('/login', authEncryptionMiddleware.encrypt, authController.login);
 
 
 export default router;
