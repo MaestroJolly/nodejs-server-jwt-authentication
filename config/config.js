@@ -6,7 +6,7 @@ module.exports = {
     "development": {
       "username": "",
       "password": null,
-      "database": "testdb",
+      "database": "nodeauthapp",
       "host": "127.0.0.1",
       "port": 5432,
       "dialect": "postgres",

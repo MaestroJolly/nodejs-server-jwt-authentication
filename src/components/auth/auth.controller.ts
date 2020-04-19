@@ -10,8 +10,17 @@ const authService = new AuthService;
 
 class AuthController{
 
-    login(req: Request, res: Response){
-        return res.send(authService.login(req.query.id));
+    async login(req: Request, res: Response){
+
+        try {
+            const user = await authService.login(req.body);
+            if(!user){
+                throw new Error('No user found');
+            }
+            return res.send(user);
+        } catch (error) {
+            return res.status(400).send({ message:error.message });
+        }
     }
 }
 

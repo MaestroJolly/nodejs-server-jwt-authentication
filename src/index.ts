@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 
-app.use(authRoutes);
+app.use('/auth', authRoutes);
 
 app.get('/', (req, res)=>{
     res.json({
