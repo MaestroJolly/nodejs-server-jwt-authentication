@@ -1,13 +1,19 @@
 "use strict";
 
+import * as bcrypt from 'bcryptjs';
 import { Request, Response, NextFunction } from 'express';
 
 
-class AuthEncryptionMiddleware {
+export class AuthEncryptionMiddleware {
 
     encrypt(req: Request, res: Response, next: NextFunction){
+        console.log(req.body.password);
+        bcrypt.compare
         return next();
     }
-}
 
-export default AuthEncryptionMiddleware;
+    decrypt(req: Request, res: Response, next: NextFunction){
+        console.log(req.body.password);
+        return next();
+    }
+};

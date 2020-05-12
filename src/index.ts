@@ -7,6 +7,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import authRoutes from './components/auth';
+import usersRoutes from './components/users';
+import { Passport } from 'passport';
+
+const passport = new Passport;
 
 const app = express();
 const PORT = process.env.PORT || 3333;
@@ -19,6 +23,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.use('/auth', authRoutes);
+
+app.use('/users', usersRoutes);
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.get('/', (req, res)=>{
     res.json({
