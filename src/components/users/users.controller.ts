@@ -39,4 +39,13 @@ export class UsersController{
             return res.send(user);
         })(req, res, next);
     }
+
+    async register(req: Request, res: Response, next: NextFunction){
+        try {
+            const register = await usersService.register(req.body);
+            return res.send(register);
+        } catch (error) {
+            return res.status(400).send({ message: error.message });
+        }
+    }
 };

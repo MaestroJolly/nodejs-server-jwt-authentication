@@ -8,6 +8,8 @@ const router = express.Router();
 const usersController = new UsersController;
 
 
+router.post('/register', usersController.register);
+
 router.get('/profile', usersController.profile);
 
 
