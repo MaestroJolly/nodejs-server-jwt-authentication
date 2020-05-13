@@ -20,7 +20,7 @@ export class JwtStrategy{
 
             try {
                 
-                const user = await models.User.findOne({id: jwt_payload.sub});
+                const user = await models.User.findOne({ raw: true, where: { id: jwt_payload.sub }, attributes: ['id','firstName','lastName','otherName','email','age','sex','country','isAdmin','createdAt','updatedAt' ] });
 
                 if(!user){
                     return done(null, false, { message: "No user found" });
