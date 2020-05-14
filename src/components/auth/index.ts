@@ -2,7 +2,7 @@
 
 import express from 'express';
 import  { AuthController } from '../auth/auth.controller';
-import { AuthEncryptionMiddleware } from '../middlewares/auth.encryption.middleware';
+import { AuthEncryptionMiddleware } from '../auth/auth.encryption.middleware';
 
 const router = express.Router();
 

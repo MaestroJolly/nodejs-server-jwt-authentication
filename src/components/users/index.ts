@@ -1,14 +1,19 @@
 'use strict';
 
-import express from 'express';
+import express, { NextFunction } from 'express';
+import { check, validationResult, CustomValidator } from 'express-validator';
 import  { UsersController } from '../users/users.controller';
+import { UsersRegisterValidator } from '../users/users.register.validator';
 
 const router = express.Router();
 
 const usersController = new UsersController;
+const usersRegisterValidator = new UsersRegisterValidator;
 
 
-router.post('/register', usersController.register);
+
+
+router.post('/register', usersRegisterValidator.checkParams, usersRegisterValidator.validateError, usersController.register);
 
 router.get('/profile', usersController.profile);
 
