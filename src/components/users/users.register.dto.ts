@@ -3,6 +3,7 @@ export interface UsersRegisterDTO {
     lastName: string,
     otherName: string,
     email: string,
+    phonenumber: number,
     age: number,
     sex: string,
     country: string,
