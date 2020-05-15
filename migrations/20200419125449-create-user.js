@@ -21,10 +21,11 @@ module.exports = {
       },
       email: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       phonenumber: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       age: {
         type: Sequelize.INTEGER

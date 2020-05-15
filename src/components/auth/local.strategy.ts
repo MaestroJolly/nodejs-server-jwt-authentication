@@ -38,7 +38,7 @@ export class LocalStrategy{
                 });
 
                 if(!user){
-                    return done(null, false, { message: 'This email is not registered'});
+                    return done(null, false, { message: 'Invalid Email'});
                 }
 
                 if(user && await this.comparePassword(password, user.password)) {

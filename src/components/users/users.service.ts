@@ -31,11 +31,21 @@ export class UsersService {
     }
 
     async register(params: UsersRegisterDTO): Promise<any> {
-        this.confirmPassword(params.password, params.confirmPassword);
+        // this.confirmPassword(params.password, params.confirmPassword); //temporarily removed, not really needed since we are already using express-validator
         delete params.confirmPassword;
         const hashPassword = await this.hashPassword(params.password);
         delete params.password;
         params.password = hashPassword;
+
+        let getUser = false;
+        getUser = await models.User.findOne({raw: true, where:{
+            email: params.email
+        }, attributes: ['email']});
+
+        if(getUser){
+            throw new Error('email is already registered.');
+        }
+        
         return await models.User.create(params);
     }
 
