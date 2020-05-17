@@ -1,7 +1,4 @@
-'use strict';
-
 import express, { NextFunction } from 'express';
-import { check, validationResult, CustomValidator } from 'express-validator';
 import  { UsersController } from '../users/users.controller';
 import { UsersRegisterValidator } from '../users/users.register.validator';
 
