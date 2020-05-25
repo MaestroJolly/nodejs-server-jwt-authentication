@@ -4,7 +4,11 @@ import { UsersRegisterDTO } from './users.register.dto';
 
 import * as bcrypt from 'bcryptjs';
 
-const models = require('../../../models');
+import sequelize from '../../models';
+
+import User from '../../models/user.model';
+
+const UserRepository = sequelize.getRepository(User);
 
 
 export class UsersService {
@@ -37,8 +41,7 @@ export class UsersService {
         delete params.password;
         params.password = hashPassword;
 
-        let getUser = false;
-        getUser = await models.User.findOne({raw: true, where:{
+        let getUser = await UserRepository.findOne({raw: true, where:{
             email: params.email
         }, attributes: ['email']});
 
@@ -46,7 +49,7 @@ export class UsersService {
             throw new Error('email is already registered.');
         }
         
-        return await models.User.create(params);
+        return await UserRepository.create(params);
     }
 
 };
