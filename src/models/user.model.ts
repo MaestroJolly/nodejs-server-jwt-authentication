@@ -1,15 +1,15 @@
 //user.model.ts
-import { Table, Column, Model, PrimaryKey, IsUUID, AutoIncrement, AllowNull, NotEmpty, Unique, Index, CreatedAt, UpdatedAt } from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey, AutoIncrement, AllowNull, NotEmpty, Unique, Index, CreatedAt, UpdatedAt } from 'sequelize-typescript';
  
 export const UserN = 'Not a model';
 export const NUser = 'Not a model';
 export interface UserDTO{
-    id: string,
+    id: number,
     firstName: string,
     lastName: string,
     otherName: string,
     email: string,
-    phonenumber: number,
+    phonenumber: string,
     age: number,
     sex: string,
     country: string,
@@ -23,10 +23,10 @@ export interface UserDTO{
 })
 export default class User extends Model<UserDTO> {
  
-    @IsUUID(4)
+    @AutoIncrement
     @PrimaryKey
     @Column
-    id!: string;
+    id!: number;
 
     @AllowNull(false)
     @NotEmpty
