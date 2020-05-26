@@ -13,9 +13,9 @@ module.exports = {
       // "operatorsAliases": false
     },
     "test": {
-      "username": "root",
+      "username": "",
       "password": null,
-      "database": "database_test",
+      "database": "nodeauthapp_test",
       "host": "127.0.0.1",
       "port": 5432,
       "dialect": "postgres",
