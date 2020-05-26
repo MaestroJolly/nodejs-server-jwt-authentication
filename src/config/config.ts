@@ -1,8 +1,10 @@
-"use strict";
-
 require('dotenv').config();
 
-module.exports = {
+type Config = {
+    [key: string]: any
+}
+
+export const config: Config = {
     "development": {
       "username": "",
       "password": null,
@@ -10,15 +12,17 @@ module.exports = {
       "host": "127.0.0.1",
       "port": 5432,
       "dialect": "postgres",
+      "repositoryMode": true,
       // "operatorsAliases": false
     },
     "test": {
       "username": "",
-      "password": null,
+      "password": "",
       "database": "nodeauthapp_test",
       "host": "127.0.0.1",
       "port": 5432,
       "dialect": "postgres",
+      "repositoryMode": true,
       // "operatorsAliases": false
     },
     "production": {
@@ -28,6 +32,7 @@ module.exports = {
       "host": process.env.PROD_DB_HOSTNAME,
       "port": process.env.PROD_DB_PORT,
       "dialect": "postgres",
+      "repositoryMode": true,
       // "operatorsAliases": false
     }
 }

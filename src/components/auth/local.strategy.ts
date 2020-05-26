@@ -3,7 +3,11 @@
 import { Strategy } from 'passport-local';
 import * as bcrypt from 'bcryptjs';
 
-const models = require('../../../models');
+import sequelize from '../../models';
+
+import User from '../../models/user.model';
+
+const UserRepository = sequelize.getRepository(User);
 
 
 export class LocalStrategy{
@@ -17,7 +21,7 @@ export class LocalStrategy{
     }
     
     async validateUser(email: string, pass: string): Promise<any> {
-        const user = await models.User.findOne({raw:true, where:{
+        const user = await UserRepository.findOne({raw:true, where:{
                 email: email
             }
         });
@@ -32,7 +36,7 @@ export class LocalStrategy{
         passportArg.use(new Strategy({usernameField: 'email', passwordField: 'password'}, async (email: string, password: string, done: CallableFunction) =>{
 
             try {
-                const user = await models.User.findOne({raw:true, where:{
+                const user = await UserRepository.findOne({raw:true, where:{
                     email: email
                     }
                 });

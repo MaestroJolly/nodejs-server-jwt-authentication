@@ -10,6 +10,7 @@ import authRoutes from './components/auth';
 import usersRoutes from './components/users';
 import { Passport } from 'passport';
 import cors from 'cors';
+import sequelize from './models';
 
 const passport = new Passport;
 
@@ -28,7 +29,6 @@ app.use('/auth', authRoutes);
 
 app.use('/users', usersRoutes);
 
-
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -42,4 +42,14 @@ app.get('/', (req, res)=>{
 
 app.listen(PORT, ()=>{
     console.log(`App is listening is PORT ${PORT}`);
+    sequelize.authenticate().then(async ()=>{
+        console.log('Database Connection Successfully Established');
+        try {
+            await sequelize.sync({ force: true });
+        } catch (error) {
+            console.log(error.message);
+        }
+    }).catch((err: any) =>{
+        console.log(err.message);
+    })
 });

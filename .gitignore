@@ -8,6 +8,13 @@
 .AppleDouble
 .LSOverride
 
+# sequelize e5 folders and files
+
+config/
+migrations/
+models/
+seeders/
+
 # Icon must end with two \r
 Icon
 
