@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node_modules/.bin/sequelize db:migrate && tsc && node dist/index",
+    "start": "tsc && node dist/index",
     "start:dev": "tsc && nodemon dist/index"
   },
   "keywords": [],
