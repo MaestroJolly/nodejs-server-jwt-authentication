@@ -12,6 +12,7 @@
 
 config/
 migrations/
+models/
 seeders/
 
 # Icon must end with two \r
