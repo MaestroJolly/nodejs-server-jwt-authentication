@@ -9,6 +9,7 @@ import morgan from 'morgan';
 import authRoutes from './components/auth';
 import usersRoutes from './components/users';
 import { Passport } from 'passport';
+import cors from 'cors';
 import sequelize from './models';
 
 const passport = new Passport;
@@ -16,6 +17,7 @@ const passport = new Passport;
 const app = express();
 const PORT = process.env.PORT || 3333;
 
+app.use(cors());
 
 app.use(bodyParser.json());
 

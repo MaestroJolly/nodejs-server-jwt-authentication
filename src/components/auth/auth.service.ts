@@ -1,5 +1,3 @@
-'use strict';
-
 import { AuthLoginDTO } from './auth.login.dto';
 import * as jwt from 'jsonwebtoken';
 
