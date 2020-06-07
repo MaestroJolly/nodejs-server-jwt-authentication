@@ -5,9 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "NODE_ENV=test && jest --runInBand --detectOpenHandles",
-    "build": "tsc",
-    "start": "tsc && node dist/index",
-    "start:dev": "tsc && nodemon dist/index"
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/index",
+    "start:dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -41,12 +41,14 @@
     "@types/node": "^13.13.6",
     "@types/passport-jwt": "^3.0.3",
     "@types/passport-local": "^1.0.33",
-    "jest": "^26.0.1",
     "@types/validator": "^13.0.0",
+    "jest": "^26.0.1",
     "morgan": "^1.10.0",
+    "rimraf": "^3.0.2",
     "sequelize-cli": "^5.5.1",
     "ts-jest": "^25.5.1",
     "ts-lint": "^4.5.1",
+    "ts-node": "^8.10.2",
     "tsc-node": "0.0.3",
     "typescript": "^3.8.3"
   }
