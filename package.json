@@ -4,7 +4,7 @@
   "description": "This is an authentication API scaffold built with NodeJS, Typescript, Passport, Sequelize and PostgreSQL Database.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "NODE_ENV=test node_modules/.bin/sequelize db:migrate && jest",
+    "test": "NODE_ENV=test && jest --runInBand --detectOpenHandles",
     "build": "tsc",
     "start": "tsc && node dist/index",
     "start:dev": "tsc && nodemon dist/index"
