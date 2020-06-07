@@ -1,4 +1,4 @@
-import { UsersService } from "../../src/components/users/users.service";
+import { UsersService } from "../../components/users/users.service";
 import data from './mocked_data/user.data';
 
 const usersService = new UsersService;
